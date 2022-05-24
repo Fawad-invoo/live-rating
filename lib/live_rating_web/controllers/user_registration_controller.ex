@@ -4,7 +4,6 @@ defmodule LiveRatingWeb.UserRegistrationController do
   alias LiveRating.Account
   alias LiveRating.Account.User
 
-
   def new(conn, _params) do
     changeset = Account.change_user_registration(%User{})
     render(conn, "index.html", changeset: changeset)
@@ -21,7 +20,6 @@ defmodule LiveRatingWeb.UserRegistrationController do
 
         conn
         |> put_flash(:info, "User created successfully.")
-
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "index.html", changeset: changeset)

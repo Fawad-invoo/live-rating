@@ -22,9 +22,9 @@ defmodule LiveRatingWeb.Router do
 
   scope "/", LiveRatingWeb do
     pipe_through [:browser]
-
-    get "/users/register", UserRegistrationController, :new
-    post "/users/register", UserRegistrationController, :create
+    live "/users/register", UserRegistrationLive.New, as: :user_registration_path
+    # get "/users/register", UserRegistrationController, :new
+    # post "/users/register", UserRegistrationController, :create
     get "/users/game", GameController, :new
     post "/users/game", GameController, :create
 

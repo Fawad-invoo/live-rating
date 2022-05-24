@@ -18,8 +18,16 @@ defmodule LiveRating.Account do
     User.registration_changeset(user, attrs, hash_password: false)
   end
 
-  def get_all_users() do
+  def get_all_users(nil) do
     Repo.all(User) |> update_users_map()
+  end
+
+  def get_all_users(sort_by) do
+    query =
+      from User,
+        order_by: [desc: ^sort_by]
+
+    Repo.all(query) |> update_users_map()
   end
 
   def update_users_map(users) do
